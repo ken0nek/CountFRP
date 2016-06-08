@@ -12,6 +12,8 @@
 		E99CE28E1D07D31000E70FB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99CE28C1D07D31000E70FB8 /* Main.storyboard */; };
 		E99CE2901D07D31000E70FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E99CE28F1D07D31000E70FB8 /* Assets.xcassets */; };
 		E99CE2931D07D31000E70FB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99CE2911D07D31000E70FB8 /* LaunchScreen.storyboard */; };
+		E99CE29B1D07D48400E70FB8 /* CountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99CE29A1D07D48400E70FB8 /* CountViewModel.swift */; };
+		E99CE29D1D07D6A100E70FB8 /* Bond.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E99CE29C1D07D6A100E70FB8 /* Bond.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		E99CE28F1D07D31000E70FB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E99CE2921D07D31000E70FB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E99CE2941D07D31000E70FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E99CE29A1D07D48400E70FB8 /* CountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountViewModel.swift; sourceTree = "<group>"; };
+		E99CE29C1D07D6A100E70FB8 /* Bond.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bond.framework; path = Carthage/Build/iOS/Bond.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99CE29D1D07D6A100E70FB8 /* Bond.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +43,7 @@
 		E99CE27C1D07D30F00E70FB8 = {
 			isa = PBXGroup;
 			children = (
+				E99CE29C1D07D6A100E70FB8 /* Bond.framework */,
 				E99CE2871D07D31000E70FB8 /* CountFRP */,
 				E99CE2861D07D30F00E70FB8 /* Products */,
 			);
@@ -56,6 +62,7 @@
 			children = (
 				E99CE2881D07D31000E70FB8 /* AppDelegate.swift */,
 				E99CE28A1D07D31000E70FB8 /* ViewController.swift */,
+				E99CE29A1D07D48400E70FB8 /* CountViewModel.swift */,
 				E99CE28C1D07D31000E70FB8 /* Main.storyboard */,
 				E99CE28F1D07D31000E70FB8 /* Assets.xcassets */,
 				E99CE2911D07D31000E70FB8 /* LaunchScreen.storyboard */,
@@ -74,6 +81,7 @@
 				E99CE2811D07D30F00E70FB8 /* Sources */,
 				E99CE2821D07D30F00E70FB8 /* Frameworks */,
 				E99CE2831D07D30F00E70FB8 /* Resources */,
+				E99CE29E1D07D8B300E70FB8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -130,6 +138,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E99CE29E1D07D8B300E70FB8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Bond.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E99CE2811D07D30F00E70FB8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -137,6 +162,7 @@
 			files = (
 				E99CE28B1D07D31000E70FB8 /* ViewController.swift in Sources */,
 				E99CE2891D07D31000E70FB8 /* AppDelegate.swift in Sources */,
+				E99CE29B1D07D48400E70FB8 /* CountViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +275,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CountFRP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ken0nek.CountFRP;
@@ -260,6 +290,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CountFRP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ken0nek.CountFRP;

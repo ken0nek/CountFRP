@@ -7,3 +7,8 @@
 //
 
 import Foundation
+import Bond
+
+struct CountViewModel {
+    var number = Observable<Int>(0)
+}
