@@ -25,51 +25,34 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
 
-        plusButton.bnd_controlEvent
-            .filter { $0 == .TouchUpInside }
+        plusButton.bnd_tap
             .observe { [unowned self] event in
                 self.viewModel.number.value += 1
             }
 
-        minusButton.bnd_controlEvent
-            .filter { $0 == .TouchUpInside }
+        minusButton.bnd_tap
             .observe { [unowned self] event in
                 self.viewModel.number.value -= 1
         }
 
-        timesButton.bnd_controlEvent
-            .filter { $0 == .TouchUpInside }
+        timesButton.bnd_tap
             .observe { [unowned self] event in
                 self.viewModel.number.value *= 2
         }
 
-        divideButton.bnd_controlEvent
-            .filter { $0 == .TouchUpInside }
+        divideButton.bnd_tap
             .observe { [unowned self] event in
                 self.viewModel.number.value /= 2
         }
 
-        clearButton.bnd_controlEvent
-            .filter { $0 == .TouchUpInside }
+        clearButton.bnd_tap
             .observe { [unowned self] event in
                 self.viewModel.number.value = 0
         }
 
-        viewModel.number
-            .map { "\($0)" }
-            .bindTo(numberLabel.bnd_text)
+        viewModel.text.bindTo(numberLabel.bnd_text)
 
-        viewModel.number
-            .map {
-                if $0 > 0 {
-                    return .blueColor()
-                } else if $0 == 0 {
-                    return .blackColor()
-                } else {
-                    return .redColor()
-                }
-            }
-            .bindTo(numberLabel.bnd_textColor)
+        viewModel.textColor.bindTo(numberLabel.bnd_textColor)
     }
 
     override func didReceiveMemoryWarning() {

@@ -6,9 +6,27 @@
 //  Copyright © 2016 ken0nek. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Bond
 
 struct CountViewModel {
-    var number = Observable<Int>(0)
+    let number = Observable<Int>(0)
+    let text: EventProducer<String>
+    let textColor: EventProducer<UIColor>
+
+    init() {
+        self.text = number
+            .map { "\($0)" }
+
+        self.textColor = number
+            .map {
+                if $0 > 0 {
+                    return .blueColor()
+                } else if $0 == 0 {
+                    return .blackColor()
+                } else {
+                    return .redColor()
+                }
+        }
+    }
 }
