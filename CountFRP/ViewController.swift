@@ -9,45 +9,40 @@
 import UIKit
 import Bond
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
-    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak private var numberLabel: UILabel!
 
-    @IBOutlet weak var plusButton: UIButton!
-    @IBOutlet weak var minusButton: UIButton!
-    @IBOutlet weak var timesButton: UIButton!
-    @IBOutlet weak var divideButton: UIButton!
-    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak private var plusButton: UIButton!
+    @IBOutlet weak private var minusButton: UIButton!
+    @IBOutlet weak private var timesButton: UIButton!
+    @IBOutlet weak private var divideButton: UIButton!
+    @IBOutlet weak private var clearButton: UIButton!
 
-    let viewModel = CountViewModel()
+    private let viewModel = CountViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
 
-        plusButton.bnd_tap
-            .observe { [unowned self] event in
-                self.viewModel.number.value += 1
-            }
-
-        minusButton.bnd_tap
-            .observe { [unowned self] event in
-                self.viewModel.number.value -= 1
+        plusButton.bnd_tap.observe { [unowned self] event in
+            self.viewModel.number.value += 1
         }
 
-        timesButton.bnd_tap
-            .observe { [unowned self] event in
-                self.viewModel.number.value *= 2
+        minusButton.bnd_tap.observe { [unowned self] event in
+            self.viewModel.number.value -= 1
         }
 
-        divideButton.bnd_tap
-            .observe { [unowned self] event in
-                self.viewModel.number.value /= 2
+        timesButton.bnd_tap.observe { [unowned self] event in
+            self.viewModel.number.value *= 2
         }
 
-        clearButton.bnd_tap
-            .observe { [unowned self] event in
-                self.viewModel.number.value = 0
+        divideButton.bnd_tap.observe { [unowned self] event in
+            self.viewModel.number.value /= 2
+        }
+
+        clearButton.bnd_tap.observe { [unowned self] event in
+            self.viewModel.number.value = 0
         }
 
         viewModel.text.bindTo(numberLabel.bnd_text)
@@ -59,7 +54,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
