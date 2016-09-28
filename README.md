@@ -15,4 +15,4 @@ Count App Sample using FRP and MVVM
     - Zero: Black
 
 ## Library
-- [SwiftBond/Bond](https://github.com/SwiftBond/Bond)
+- [ReactiveKit/Bond: A Swift binding framework](https://github.com/ReactiveKit/Bond)
