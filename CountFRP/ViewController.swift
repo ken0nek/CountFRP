@@ -11,13 +11,13 @@ import Bond
 
 final class ViewController: UIViewController {
 
-    @IBOutlet weak private var numberLabel: UILabel!
+    @IBOutlet private weak var numberLabel: UILabel!
 
-    @IBOutlet weak private var plusButton: UIButton!
-    @IBOutlet weak private var minusButton: UIButton!
-    @IBOutlet weak private var timesButton: UIButton!
-    @IBOutlet weak private var divideButton: UIButton!
-    @IBOutlet weak private var clearButton: UIButton!
+    @IBOutlet private weak var plusButton: UIButton!
+    @IBOutlet private weak var minusButton: UIButton!
+    @IBOutlet private weak var timesButton: UIButton!
+    @IBOutlet private weak var divideButton: UIButton!
+    @IBOutlet private weak var clearButton: UIButton!
 
     private let viewModel = CountViewModel()
 
@@ -45,9 +45,8 @@ final class ViewController: UIViewController {
             self.viewModel.number.value = 0
         }
 
-        viewModel.text.bindTo(numberLabel.bnd_text)
-
-        viewModel.textColor.bindTo(numberLabel.bnd_textColor)
+        viewModel.text.bind(to: numberLabel.bnd_text)
+        viewModel.textColor.bind(to: numberLabel.bnd_textColor)
     }
 
     override func didReceiveMemoryWarning() {

@@ -8,11 +8,12 @@
 
 import UIKit
 import Bond
+import ReactiveKit
 
 struct CountViewModel {
     let number = Observable<Int>(0)
-    let text: EventProducer<String>
-    let textColor: EventProducer<UIColor>
+    let text: Signal<String, NoError>
+    let textColor: Signal<UIColor, NoError>
 
     init() {
         self.text = number
@@ -21,11 +22,11 @@ struct CountViewModel {
         self.textColor = number
             .map {
                 if $0 > 0 {
-                    return .blueColor()
+                    return .blue
                 } else if $0 == 0 {
-                    return .blackColor()
+                    return .black
                 } else {
-                    return .redColor()
+                    return .red
                 }
         }
     }

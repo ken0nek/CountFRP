@@ -1,2 +1,2 @@
- github "SwiftBond/Bond"
+github "SwiftBond/Bond" ~> 5.0
 
